@@ -1,0 +1,149 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green">
+</div>
+<div id="ball2" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green">
+</div>
+<div id="ball3" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:yellow">
+</div>
+
+<script>
+
+//green, blue, purple ball
+var time = 12;  // this is time in milliseconds, so 3000 is 3 seconds.  Make number smaller for ball to go faster
+var velocityX = 2;    // decrease number to get a smoother flow of the ball
+var velocityY = 4;    // decrease number to get a smoother flow of the ball
+var positionX = 100;
+var positionY = 300;
+var reverse = false;
+var ball = document.getElementById('ball');  //get handle on the ball
+
+//yellow ball
+var velocity3X = 1;    // decrease number to get a smoother flow of the ball
+var velocity3Y = 1;    // decrease number to get a smoother flow of the ball
+var position3X = 500;
+var position3Y = 600;
+var reverse3 = true;
+var ball3 = document.getElementById('ball3');  //get handle on the ball
+
+//green ball
+var velocity2 = 2;    // decrease number to get a smoother flow of the ball
+var position2X = 200;
+var reverse2 = false;
+var ball2 = document.getElementById('ball2');  //get handle on the ball
+
+
+//move the ball around
+function moveBall() {            //increasing the position of the ball based on the velocity
+    var Xmin = 200; // area is defined by Xmin and Xmax
+    var Xmax = 500; // area is defined by Xmin and Xmax
+    var Ymin = 100;
+    var Ymax = 500;
+
+    if (reverse) {  //determine direction ball will move
+      positionX = positionX - velocityX;
+      positionY = positionY - velocityY;
+      ball.style.left = positionX + 'px';   //set ball position on the left axis
+      ball.style.top = positionY + 'px';   //set ball position on the top axis
+      ball.style.background = "blue";
+
+    } 
+    else{
+      positionX = positionX + velocityX;
+      positionY = positionY + velocityY;
+      ball.style.left = positionX + 'px';   //set ball position on the left axis
+      ball.style.top = positionY + 'px';   //set ball position on the top axis
+      ball.style.background = "purple";
+
+    }
+
+    //compare position of ball to min edge and max edge
+    if (positionX > Xmax || positionX == Xmin || positionY > Ymax || positionY == Ymin) 
+    {
+       reverse = !reverse;
+       
+    }  
+}
+setInterval(moveBall, time);  // setInterval calls the increasePosition function over and over again
+
+
+function moveYellowBall() {            //increasing the position of the ball based on the velocity
+    var Xmin3 = 300; // area is defined by Xmin and Xmax
+    var Xmax3 = 600; // area is defined by Xmin and Xmax
+    var Ymin3 = 200;
+    var Ymax3 = 600;
+
+    if (reverse3) {  //determine direction ball will move
+      position3X = position3X - velocity3X;
+      position3Y = position3Y - velocity3Y;
+      ball3.style.left = position3X + 'px';   //set ball position on the left axis
+      ball3.style.top = position3Y + 'px';   //set ball position on the top axis
+
+    } 
+    else{
+      position3X = position3X + velocity3X;
+      position3Y = position3Y + velocity3Y;
+      ball3.style.left = position3X + 'px';   //set ball position on the left axis
+      ball3.style.top = position3Y + 'px';   //set ball position on the top axis
+
+    }
+
+    //compare position of ball to min edge and max edge
+    if (position3X > Xmax3 || position3X == Xmin3 || position3Y > Ymax3 || position3Y == Ymin3) 
+    {
+       reverse3 = !reverse3;
+       
+    }  
+}
+setInterval(moveYellowBall, time);  // setInterval calls the increasePosition function over and over again
+
+
+
+
+function moveGreenBall() {            //increasing the position of the ball based on the velocity
+    var Xmin2 = 200; // area is defined by Xmin and Xmax
+    var Xmax2 = 500; // area is defined by Xmin and Xmax
+
+    if (reverse2) {  //determine direction ball will move
+      position2X = position2X - velocity2;
+      ball2.style.left = position2X + 'px';   //set ball position on the left axis
+    } 
+    else{
+      position2X = position2X + velocity2;
+      ball2.style.left = position2X + 'px';   //set ball position on the left axis
+    }
+
+    //compare position of ball to min edge and max edge
+    if (position2X > Xmax2 || position2X == Xmin2) 
+    {
+       reverse2 = !reverse2;
+    }
+
+   
+}
+setInterval(moveGreenBall, time);  // setInterval calls the increasePosition function over and over again
+
+</script>
+

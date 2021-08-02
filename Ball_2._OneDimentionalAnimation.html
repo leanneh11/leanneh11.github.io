@@ -1,0 +1,27 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green">
+</div>
+
+<script>
+
+
+var time = 50;  // this is time in milliseconds, so 3000 is 3 seconds.  Make number smaller for ball to go faster
+var velocity = 5;    // decrease number to get a smoother flow of the ball
+var positionX = 0;
+var ball = document.getElementById('ball');  //get handle on the ball
+
+//move the ball around
+function moveBall() {            //increasing the position of the ball based on the velocity
+    positionX = positionX + velocity;
+    ball.style.left = positionX + 'px';   //set ball position on the left axis
+}
+setInterval(moveBall, time);  // setInterval calls the increasePosition function over and over again
+
+</script>
